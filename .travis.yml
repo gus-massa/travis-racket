@@ -35,6 +35,7 @@ env:
     - RACKET_VERSION=6.10
     - RACKET_VERSION=HEAD
     - RACKET_VERSION=RELEASE
+    - RACKET_VERSION=BETA7.0
 
 # You may want to test against certain versions of Racket, without
 # having them count against the overall success/failure.
@@ -42,6 +43,7 @@ matrix:
   allow_failures:
     - env: RACKET_VERSION=HEAD
     - env: RACKET_VERSION=RELEASE
+    - env: RACKET_VERSION=BETA7.0
   # Fast finish: Overall build result is determined as soon as any of
   # its rows have failed, or, all of its rows that aren't allowed to
   # fail have succeeded.
@@ -49,7 +51,7 @@ matrix:
 
 
 before_install:
-  - git clone https://github.com/greghendershott/travis-racket.git
+  - git clone -b 18-6-Beta7 https://github.com/gus-massa/travis-racket.git
   - cat travis-racket/install-racket.sh | bash # pipe to bash not sh!
   - export PATH="${RACKET_DIR}/bin:${PATH}" #install-racket.sh can't set for us
 
