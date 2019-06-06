@@ -15,7 +15,12 @@ env:
     # create a Travis-CI build matrix to test against multiple Racket
     # versions.
     #
-    # The RELEASE snapshot is only available during the release process.
+    # Note: You may set RACKET_VERSION to RELEASE to use whatever is
+    # at <https://pre-release.racket-lang.org/installers/>. However,
+    # typically this is only available and/or updated in the weeks
+    # before a new version of Racket is released. As a result, this is
+    # probably not something you want to "set and forget" in your
+    # matrix long-term.
     - RACKET_VERSION=6.1
     - RACKET_VERSION=6.1.1
     - RACKET_VERSION=6.2
@@ -33,7 +38,6 @@ env:
     - RACKET_VERSION=7.1
     - RACKET_VERSION=HEAD
     - RACKET_VERSION=HEADCS
-    - RACKET_VERSION=RELEASE
 
 # You may want to test against certain versions of Racket, without
 # having them count against the overall success/failure.
@@ -41,7 +45,6 @@ matrix:
   allow_failures:
     - env: RACKET_VERSION=HEAD
     - env: RACKET_VERSION=HEADCS
-    - env: RACKET_VERSION=RELEASE
   # Fast finish: Overall build result is determined as soon as any of
   # its rows have failed, or, all of its rows that aren't allowed to
   # fail have succeeded.
