@@ -29,17 +29,24 @@ env:
     - RACKET_VERSION=6.12
     - RACKET_VERSION=7.0
     - RACKET_VERSION=7.1
+    # The next three are developers version, that may have bugs that
+    # should (hopefully) be fixed before the official versions are
+    # published. So they may fall unexpectedly.
+    #
     # "HEAD" is a daily snapshot built from the `master` branch, for
-    # the variant of Racket that uses its own runtime.
+    # the variant of Racket that uses its own runtime. This is the 
+    # base for the next Racket version.
     - RACKET_VERSION=HEAD
     # "HEADCS" is a daily snapshot build from the `master` branch, for
-    # the variant of Racket that uses Chez Scheme.
+    # the experimental variant of Racket that uses Chez Scheme.
+    # This may have some minor incompatibilities.
+    # It will eventually become the main Racket version.
     - RACKET_VERSION=HEADCS
     # "RELEASE" is a release candidate build that the Racket team
     # updates only in the weeks before a new release. Thereafter the
-    # final release candidate remains available indefinitely, so you
-    # may leave this in your .travis.yml year-round. See
-    # <https://pre-release.racket-lang.org/installers/>.
+    # final release candidate remains frozen for a few month until the
+    # next release period.
+    # See <https://pre-release.racket-lang.org/installers/>.
     - RACKET_VERSION=RELEASE
 
 # You may want to test against certain versions of Racket, without
